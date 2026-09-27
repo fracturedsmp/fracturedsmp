@@ -2930,7 +2930,231 @@ footer:before{
   *,*:before,*:after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}
 }
 
+
+/* FRACTURED SMP — VISUAL REFINEMENT */
+.character-card{
+  overflow:hidden!important;
+  transition:transform .55s cubic-bezier(.2,.8,.2,1),border-color .35s,box-shadow .55s!important;
+}
+.character-card:hover{
+  border-color:rgba(255,43,43,.42)!important;
+  box-shadow:0 30px 90px rgba(0,0,0,.55),0 0 55px rgba(255,43,43,.08)!important;
+}
+.character-info{
+  display:flex!important;
+  flex-direction:column!important;
+  min-height:100%!important;
+}
+.character-latest{
+  margin-top:22px;
+  position:relative;
+  z-index:8;
+}
+.character-latest-head{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:8px;
+  font:8px 'DM Mono',monospace;
+  letter-spacing:.12em;
+  color:rgba(255,255,255,.42);
+}
+.character-latest-head span{
+  display:flex;
+  align-items:center;
+  gap:7px;
+}
+.character-latest-head i{
+  width:5px;height:5px;border-radius:50%;
+  display:inline-block;background:#ff3030;
+  box-shadow:0 0 12px rgba(255,43,43,.9);
+  animation:ytPulse 1.6s ease-in-out infinite;
+}
+.character-latest-head a{
+  color:rgba(255,255,255,.36);
+  text-decoration:none;
+  transition:.25s;
+}
+.character-latest-head a:hover{color:#fff}
+.character-video{
+  position:relative;
+  width:100%;
+  aspect-ratio:16/7.8;
+  overflow:hidden;
+  border:1px solid rgba(255,255,255,.11);
+  background:#050507;
+  box-shadow:inset 0 0 30px rgba(0,0,0,.35);
+}
+.character-video iframe{
+  width:100%;
+  height:100%;
+  display:block;
+  border:0;
+}
+.character-video:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  border:1px solid rgba(255,255,255,.035);
+}
+.character-video-fallback{
+  position:absolute;
+  right:8px;
+  bottom:8px;
+  z-index:3;
+  padding:7px 9px;
+  font:7px 'DM Mono',monospace;
+  letter-spacing:.08em;
+  color:#fff;
+  text-decoration:none;
+  background:rgba(0,0,0,.75);
+  border:1px solid rgba(255,255,255,.14);
+  backdrop-filter:blur(8px);
+  opacity:.65;
+  transition:.25s;
+}
+.character-video-fallback:hover{
+  opacity:1;
+  border-color:#ff2b2b;
+  background:rgba(255,43,43,.14);
+}
+@keyframes ytPulse{
+  0%,100%{opacity:.45;transform:scale(.85)}
+  50%{opacity:1;transform:scale(1.15)}
+}
+
+/* Make the character section feel like a premium roster */
+.characters{
+  background:
+    radial-gradient(circle at 15% 20%,rgba(255,43,43,.045),transparent 25rem),
+    radial-gradient(circle at 85% 75%,rgba(255,43,43,.035),transparent 25rem),
+    #050507!important;
+}
+.characters-header{
+  position:relative;
+  padding-bottom:35px;
+}
+.characters-header:after{
+  content:"ROSTER / LIVE MEDIA";
+  position:absolute;
+  right:0;
+  bottom:38px;
+  font:8px 'DM Mono',monospace;
+  letter-spacing:.18em;
+  color:rgba(255,255,255,.22);
+}
+.character-grid{
+  align-items:stretch!important;
+}
+.character-card{
+  min-height:650px!important;
+}
+.character-card .character-description{
+  margin-bottom:0!important;
+}
+@media(max-width:900px){
+  .characters-header:after{display:none}
+  .character-card{min-height:620px!important}
+  .character-video{aspect-ratio:16/9}
+}
+
 </style>
+
+
+
+<style id="fractured-v3-pending">
+.yt-pending{position:absolute;inset:0;z-index:4;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:radial-gradient(circle at 50% 45%,rgba(255,43,43,.08),transparent 40%),#030305;color:rgba(255,255,255,.36);font:9px 'DM Mono',monospace;letter-spacing:.18em;pointer-events:none}
+.yt-pending:before{content:"";width:7px;height:7px;border-radius:50%;background:#ff3030;box-shadow:0 0 18px rgba(255,43,43,.8);animation:ytPulse 1.5s ease-in-out infinite}
+.yt-pending small{font:7px 'DM Mono',monospace;color:rgba(255,255,255,.18);letter-spacing:.12em}
+</style>
+
+
+<style id="fractured-v4-video">
+.character-video{
+  isolation:isolate!important;
+  background:#020204!important;
+}
+.character-video iframe{
+  position:absolute!important;
+  inset:0!important;
+  width:100%!important;
+  height:100%!important;
+  min-width:100%!important;
+  min-height:100%!important;
+  border:0!important;
+  transform:scale(1.13)!important;
+  transform-origin:center!important;
+  filter:saturate(.72) contrast(1.08) brightness(.68)!important;
+  pointer-events:none!important;
+}
+.character-video:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:2;
+  pointer-events:none;
+  background:linear-gradient(180deg,rgba(0,0,0,.42),transparent 34%,rgba(0,0,0,.82)),linear-gradient(90deg,rgba(255,20,20,.06),transparent 48%,rgba(255,20,20,.025));
+}
+.character-video:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:3;
+  pointer-events:none;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.018) 0,rgba(255,255,255,.018) 1px,transparent 1px,transparent 4px);
+  mix-blend-mode:screen;
+  opacity:.32;
+}
+.character-video-ui{
+  position:absolute;
+  z-index:5;
+  top:10px;
+  left:11px;
+  right:11px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  pointer-events:none;
+  font:7px 'DM Mono',monospace;
+  letter-spacing:.13em;
+  color:rgba(255,255,255,.58);
+}
+.character-video-ui span{
+  display:flex;
+  align-items:center;
+  gap:6px;
+  padding:6px 8px;
+  background:rgba(0,0,0,.46);
+  border:1px solid rgba(255,255,255,.08);
+  backdrop-filter:blur(8px);
+}
+.character-video-ui i{
+  width:5px;height:5px;border-radius:50%;
+  background:#ff3030;
+  box-shadow:0 0 10px rgba(255,43,43,.9);
+  animation:ytPulse 1.5s ease-in-out infinite;
+}
+.character-video-fallback{
+  z-index:6!important;
+  right:10px!important;
+  bottom:10px!important;
+  opacity:.88!important;
+  letter-spacing:.12em!important;
+}
+.character-card:hover .character-video iframe{
+  transform:scale(1.17)!important;
+  filter:saturate(.9) contrast(1.08) brightness(.75)!important;
+}
+.character-video,.character-video iframe{
+  transition:filter .7s ease,transform 1.1s cubic-bezier(.2,.8,.2,1);
+}
+@media(max-width:700px){
+  .character-video iframe{transform:scale(1.10)!important}
+}
+</style>
+
 </head>
 
 <body>
@@ -3179,6 +3403,28 @@ footer:before{
                 <div class="character-description">
                     Nobody knows what Alpharex actually wants.
                     Some say they know more than they're willing to admit.
+                
+                <div class="character-latest">
+                    <div class="character-latest-head">
+                        <span><i></i> LATEST UPLOAD</span>
+                        <a href="https://www.youtube.com/@Alpharex130" target="_blank" rel="noopener">CHANNEL ↗</a>
+                    </div>
+                    <div class="character-video">
+        <div class="character-video-ui">
+            <span><i></i> AUTO PLAY</span>
+            <span>◉ SOUND OFF</span>
+        </div>
+                        <iframe
+            data-youtube-video=""
+            src="about:blank"
+            title="Alpharex — latest YouTube uploads"
+            loading="lazy"
+            allow="autoplay; encrypted-media; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+                        <a class="character-video-fallback" href="https://www.youtube.com/@Alpharex130" target="_blank" rel="noopener">
+                            OPEN ALPHAREX ON YOUTUBE ↗
+                        </a>
+                    </div>
                 </div>
             </div>
         </article>
@@ -3200,6 +3446,28 @@ footer:before{
                 <div class="character-description">
                     The archive surrounding this individual
                     remains inaccessible.
+                
+                <div class="character-latest">
+                    <div class="character-latest-head">
+                        <span><i></i> LATEST UPLOAD</span>
+                        <a href="https://www.youtube.com/@MidnightRavenDaw" target="_blank" rel="noopener">CHANNEL ↗</a>
+                    </div>
+                    <div class="character-video">
+        <div class="character-video-ui">
+            <span><i></i> AUTO PLAY</span>
+            <span>◉ SOUND OFF</span>
+        </div>
+                        <iframe
+            data-youtube-video=""
+            src="about:blank"
+            title="MidnightRaven__ — latest YouTube uploads"
+            loading="lazy"
+            allow="autoplay; encrypted-media; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+                        <a class="character-video-fallback" href="https://www.youtube.com/@MidnightRavenDaw" target="_blank" rel="noopener">
+                            OPEN MIDNIGHTRAVEN__ ON YOUTUBE ↗
+                        </a>
+                    </div>
                 </div>
             </div>
         </article>
@@ -3220,6 +3488,28 @@ footer:before{
 
                 <div class="character-description">
                     Information has been removed from the archive.
+                
+                <div class="character-latest">
+                    <div class="character-latest-head">
+                        <span><i></i> LATEST UPLOAD</span>
+                        <a href="https://www.youtube.com/@V4TLukas" target="_blank" rel="noopener">CHANNEL ↗</a>
+                    </div>
+                    <div class="character-video">
+        <div class="character-video-ui">
+            <span><i></i> AUTO PLAY</span>
+            <span>◉ SOUND OFF</span>
+        </div>
+                        <iframe
+            data-youtube-video=""
+            src="about:blank"
+            title="V4TLUKSA — latest YouTube uploads"
+            loading="lazy"
+            allow="autoplay; encrypted-media; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+                        <a class="character-video-fallback" href="https://www.youtube.com/@V4TLukas" target="_blank" rel="noopener">
+                            OPEN V4TLUKSA ON YOUTUBE ↗
+                        </a>
+                    </div>
                 </div>
             </div>
         </article>
@@ -3616,7 +3906,6 @@ footer:before{
 
 
 <!-- FOOTER -->
-
 <footer>
 
     <div class="footer-top">
@@ -3931,6 +4220,73 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 })();
 </script>
+<script id="fractured-v3-youtube-config">
+(function(){
+  /* FRACTURED // replace these 3 empty values with the 11-character IDs
+     from the latest YouTube video URLs. */
+  const VIDEOS = {
+    "Alpharex": "",
+    "MidnightRaven__": "",
+    "V4TLUKSA": ""
+  };
+
+  const originParam = (location.protocol === "http:" || location.protocol === "https:")
+    ? "&origin=" + encodeURIComponent(location.origin)
+    : "";
+  const params = "autoplay=1&mute=1&controls=0&playsinline=1&rel=0&playlist=VIDEO_ID&loop=1&enablejsapi=1" + originParam;
+
+  function initFracturedVideos(){
+    document.querySelectorAll(".character-card").forEach(function(card){
+      const nameEl = card.querySelector(".character-name");
+      const frame = card.querySelector("iframe[data-youtube-video]");
+      const video = card.querySelector(".character-video");
+      if(!nameEl || !frame || !video) return;
+      const id = VIDEOS[nameEl.textContent.trim()];
+
+      if(id && /^[A-Za-z0-9_-]{11}$/.test(id)){
+        frame.src = "https://www.youtube.com/embed/" + id + "?" + params.replace("VIDEO_ID", id);
+        frame.removeAttribute("data-youtube-video");
+      } else {
+        const notice = document.createElement("div");
+        notice.className = "yt-pending";
+        notice.innerHTML = "<span>TRANSMISSION PENDING</span><small>VIDEO ID REQUIRED</small>";
+        video.appendChild(notice);
+      }
+    });
+  }
+
+  if(document.readyState === "loading"){
+    document.addEventListener("DOMContentLoaded", initFracturedVideos);
+  } else {
+    initFracturedVideos();
+  }
+})();
+</script>
+
+
+<script id="fractured-v4-local-diagnostic">
+(function(){
+  if(location.protocol === "file:"){
+    document.querySelectorAll(".character-video").forEach(function(box){
+      var note=document.createElement("div");
+      note.className="local-host-note";
+      note.innerHTML="<b>LOCAL PREVIEW</b><span>Run this page through http://localhost — YouTube can reject embeds opened directly as file://.</span>";
+      box.appendChild(note);
+    });
+  }
+})();
+</script>
+<style id="fractured-v4-local-style">
+.local-host-note{
+  position:absolute;left:10px;bottom:10px;z-index:7;
+  max-width:220px;padding:8px 10px;
+  background:rgba(0,0,0,.78);border:1px solid rgba(255,43,43,.28);
+  color:rgba(255,255,255,.65);font:7px/1.5 'DM Mono',monospace;
+  letter-spacing:.08em;pointer-events:none;backdrop-filter:blur(8px);
+}
+.local-host-note b{display:block;color:#ff3030;margin-bottom:3px}
+.local-host-note span{display:block;color:rgba(255,255,255,.38)}
+</style>
 
 </body>
 </html>
