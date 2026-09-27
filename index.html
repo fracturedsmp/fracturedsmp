@@ -3155,6 +3155,210 @@ footer:before{
 }
 </style>
 
+
+<style id="fractured-v5-transmissions">
+.latest-transmissions{
+  position:relative;
+  overflow:hidden;
+  background:
+    radial-gradient(circle at 15% 20%,rgba(255,43,43,.055),transparent 28rem),
+    radial-gradient(circle at 85% 80%,rgba(255,43,43,.035),transparent 30rem),
+    #050507!important;
+}
+.latest-transmissions:before{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:repeating-linear-gradient(90deg,transparent 0,transparent 139px,rgba(255,255,255,.012) 140px);
+}
+.transmissions-header{
+  position:relative;
+  z-index:2;
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:30px;
+  margin-bottom:45px;
+}
+.transmissions-header .section-title{
+  margin-bottom:0!important;
+}
+.transmissions-header .section-title span{
+  color:#ff3030;
+}
+.transmissions-status{
+  text-align:right;
+  padding-bottom:8px;
+  font:8px/1.7 'DM Mono',monospace;
+  letter-spacing:.16em;
+  color:rgba(255,255,255,.28);
+}
+.transmissions-status i{
+  display:inline-block;
+  width:5px;height:5px;
+  margin-right:7px;
+  border-radius:50%;
+  background:#ff3030;
+  box-shadow:0 0 14px rgba(255,43,43,.9);
+  animation:ytPulse 1.5s ease-in-out infinite;
+}
+.transmissions-status small{
+  font-size:6px;
+  color:rgba(255,255,255,.16);
+}
+.transmission-grid{
+  position:relative;
+  z-index:2;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:18px;
+}
+.transmission-card{
+  min-width:0;
+}
+.transmission-media{
+  position:relative;
+  aspect-ratio:16/10;
+  overflow:hidden;
+  background:#020204;
+  border:1px solid rgba(255,255,255,.10);
+  box-shadow:0 20px 70px rgba(0,0,0,.35);
+  transition:transform .5s cubic-bezier(.2,.8,.2,1),border-color .35s,box-shadow .5s;
+}
+.transmission-card:hover .transmission-media{
+  transform:translateY(-7px);
+  border-color:rgba(255,43,43,.42);
+  box-shadow:0 30px 90px rgba(0,0,0,.55),0 0 50px rgba(255,43,43,.07);
+}
+.transmission-media iframe{
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  border:0;
+  transform:scale(1.13);
+  filter:saturate(.68) contrast(1.08) brightness(.62);
+  pointer-events:none;
+  transition:transform 1s cubic-bezier(.2,.8,.2,1),filter .7s;
+}
+.transmission-card:hover iframe{
+  transform:scale(1.17);
+  filter:saturate(.82) contrast(1.08) brightness(.70);
+}
+.transmission-media:after{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:3;
+  pointer-events:none;
+  background:
+    linear-gradient(180deg,rgba(0,0,0,.62),transparent 30%,transparent 57%,rgba(0,0,0,.88)),
+    repeating-linear-gradient(0deg,rgba(255,255,255,.018) 0,rgba(255,255,255,.018) 1px,transparent 1px,transparent 4px);
+}
+.transmission-topline,
+.transmission-bottomline{
+  position:absolute;
+  left:12px;
+  right:12px;
+  z-index:5;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  font:7px 'DM Mono',monospace;
+  letter-spacing:.13em;
+}
+.transmission-topline{
+  top:11px;
+  color:rgba(255,255,255,.55);
+}
+.transmission-topline span{
+  padding:6px 8px;
+  background:rgba(0,0,0,.48);
+  border:1px solid rgba(255,255,255,.07);
+  backdrop-filter:blur(8px);
+}
+.transmission-topline i{
+  display:inline-block;
+  width:5px;height:5px;
+  margin-right:5px;
+  border-radius:50%;
+  background:#ff3030;
+  box-shadow:0 0 11px rgba(255,43,43,.9);
+  animation:ytPulse 1.5s ease-in-out infinite;
+}
+.transmission-bottomline{
+  bottom:11px;
+  color:#fff;
+}
+.transmission-bottomline span{
+  font:13px 'Bebas Neue',Impact,sans-serif;
+  letter-spacing:.08em;
+}
+.transmission-bottomline a{
+  color:rgba(255,255,255,.65);
+  text-decoration:none;
+  padding:7px 9px;
+  border:1px solid rgba(255,255,255,.13);
+  background:rgba(0,0,0,.52);
+  transition:.25s;
+}
+.transmission-bottomline a:hover{
+  color:#fff;
+  border-color:#ff3030;
+  background:rgba(255,43,43,.13);
+}
+.transmission-placeholder{
+  position:absolute;
+  inset:0;
+  z-index:2;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  color:rgba(255,255,255,.30);
+  font:8px 'DM Mono',monospace;
+  letter-spacing:.18em;
+  pointer-events:none;
+  background:radial-gradient(circle at 50% 45%,rgba(255,43,43,.07),transparent 40%),#030305;
+}
+.transmission-placeholder:before{
+  content:"";
+  width:7px;height:7px;
+  border-radius:50%;
+  background:#ff3030;
+  box-shadow:0 0 18px rgba(255,43,43,.8);
+  animation:ytPulse 1.5s ease-in-out infinite;
+}
+.transmission-placeholder small{
+  font-size:6px;
+  color:rgba(255,255,255,.14);
+}
+.transmission-footer{
+  position:relative;
+  z-index:2;
+  display:flex;
+  justify-content:space-between;
+  margin-top:25px;
+  padding-top:17px;
+  border-top:1px solid rgba(255,255,255,.07);
+  font:7px 'DM Mono',monospace;
+  letter-spacing:.14em;
+  color:rgba(255,255,255,.18);
+}
+@media(max-width:900px){
+  .transmission-grid{grid-template-columns:1fr}
+  .transmission-media{aspect-ratio:16/9}
+  .transmissions-header{align-items:flex-start}
+}
+@media(max-width:600px){
+  .transmissions-header{display:block}
+  .transmissions-status{text-align:left;margin-top:18px}
+  .transmissions-footer{display:block;line-height:2}
+}
+</style>
+
 </head>
 
 <body>
@@ -3403,29 +3607,6 @@ footer:before{
                 <div class="character-description">
                     Nobody knows what Alpharex actually wants.
                     Some say they know more than they're willing to admit.
-                
-                <div class="character-latest">
-                    <div class="character-latest-head">
-                        <span><i></i> LATEST UPLOAD</span>
-                        <a href="https://www.youtube.com/@Alpharex130" target="_blank" rel="noopener">CHANNEL ↗</a>
-                    </div>
-                    <div class="character-video">
-        <div class="character-video-ui">
-            <span><i></i> AUTO PLAY</span>
-            <span>◉ SOUND OFF</span>
-        </div>
-                        <iframe
-            data-youtube-video=""
-            src="about:blank"
-            title="Alpharex — latest YouTube uploads"
-            loading="lazy"
-            allow="autoplay; encrypted-media; picture-in-picture; web-share"
-            allowfullscreen></iframe>
-                        <a class="character-video-fallback" href="https://www.youtube.com/@Alpharex130" target="_blank" rel="noopener">
-                            OPEN ALPHAREX ON YOUTUBE ↗
-                        </a>
-                    </div>
-                </div>
             </div>
         </article>
 
@@ -3446,29 +3627,6 @@ footer:before{
                 <div class="character-description">
                     The archive surrounding this individual
                     remains inaccessible.
-                
-                <div class="character-latest">
-                    <div class="character-latest-head">
-                        <span><i></i> LATEST UPLOAD</span>
-                        <a href="https://www.youtube.com/@MidnightRavenDaw" target="_blank" rel="noopener">CHANNEL ↗</a>
-                    </div>
-                    <div class="character-video">
-        <div class="character-video-ui">
-            <span><i></i> AUTO PLAY</span>
-            <span>◉ SOUND OFF</span>
-        </div>
-                        <iframe
-            data-youtube-video=""
-            src="about:blank"
-            title="MidnightRaven__ — latest YouTube uploads"
-            loading="lazy"
-            allow="autoplay; encrypted-media; picture-in-picture; web-share"
-            allowfullscreen></iframe>
-                        <a class="character-video-fallback" href="https://www.youtube.com/@MidnightRavenDaw" target="_blank" rel="noopener">
-                            OPEN MIDNIGHTRAVEN__ ON YOUTUBE ↗
-                        </a>
-                    </div>
-                </div>
             </div>
         </article>
 
@@ -3488,29 +3646,6 @@ footer:before{
 
                 <div class="character-description">
                     Information has been removed from the archive.
-                
-                <div class="character-latest">
-                    <div class="character-latest-head">
-                        <span><i></i> LATEST UPLOAD</span>
-                        <a href="https://www.youtube.com/@V4TLukas" target="_blank" rel="noopener">CHANNEL ↗</a>
-                    </div>
-                    <div class="character-video">
-        <div class="character-video-ui">
-            <span><i></i> AUTO PLAY</span>
-            <span>◉ SOUND OFF</span>
-        </div>
-                        <iframe
-            data-youtube-video=""
-            src="about:blank"
-            title="V4TLUKSA — latest YouTube uploads"
-            loading="lazy"
-            allow="autoplay; encrypted-media; picture-in-picture; web-share"
-            allowfullscreen></iframe>
-                        <a class="character-video-fallback" href="https://www.youtube.com/@V4TLukas" target="_blank" rel="noopener">
-                            OPEN V4TLUKSA ON YOUTUBE ↗
-                        </a>
-                    </div>
-                </div>
             </div>
         </article>
 
@@ -3876,6 +4011,103 @@ footer:before{
 </section>
 
 
+
+<!-- LATEST TRANSMISSIONS -->
+<section class="section latest-transmissions" id="transmissions">
+    <div class="transmissions-header reveal">
+        <div>
+            <div class="section-label">ARCHIVE // 004</div>
+            <h2 class="section-title">LATEST<br><span>TRANSMISSIONS</span></h2>
+        </div>
+        <div class="transmissions-status">
+            <i></i>
+            LIVE ARCHIVE<br>
+            <small>RECENT SIGNALS DETECTED</small>
+        </div>
+    </div>
+
+    <div class="transmission-grid">
+
+        <article class="transmission-card reveal" data-character="Alpharex">
+            <div class="transmission-media">
+                <div class="transmission-topline">
+                    <span><i></i> SUBJECT // 001</span>
+                    <span>AUTO / MUTE</span>
+                </div>
+                <iframe
+                    data-youtube-video=""
+                    src="about:blank"
+                    title="Alpharex — latest transmission"
+                    loading="lazy"
+                    allow="autoplay; encrypted-media; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+                <div class="transmission-placeholder">
+                    <span>TRANSMISSION PENDING</span>
+                    <small>VIDEO ID REQUIRED</small>
+                </div>
+                <div class="transmission-bottomline">
+                    <span>ALPHAREX</span>
+                    <a href="https://www.youtube.com/@Alpharex130" target="_blank" rel="noopener">CHANNEL ↗</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="transmission-card reveal" data-character="MidnightRaven__">
+            <div class="transmission-media">
+                <div class="transmission-topline">
+                    <span><i></i> SUBJECT // 002</span>
+                    <span>AUTO / MUTE</span>
+                </div>
+                <iframe
+                    data-youtube-video=""
+                    src="about:blank"
+                    title="MidnightRaven__ — latest transmission"
+                    loading="lazy"
+                    allow="autoplay; encrypted-media; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+                <div class="transmission-placeholder">
+                    <span>TRANSMISSION PENDING</span>
+                    <small>VIDEO ID REQUIRED</small>
+                </div>
+                <div class="transmission-bottomline">
+                    <span>MIDNIGHTRAVEN__</span>
+                    <a href="https://www.youtube.com/@MidnightRavenDaw" target="_blank" rel="noopener">CHANNEL ↗</a>
+                </div>
+            </div>
+        </article>
+
+        <article class="transmission-card reveal" data-character="V4TLUKSA">
+            <div class="transmission-media">
+                <div class="transmission-topline">
+                    <span><i></i> SUBJECT // 003</span>
+                    <span>AUTO / MUTE</span>
+                </div>
+                <iframe
+                    data-youtube-video=""
+                    src="about:blank"
+                    title="V4TLUKSA — latest transmission"
+                    loading="lazy"
+                    allow="autoplay; encrypted-media; picture-in-picture; web-share"
+                    allowfullscreen></iframe>
+                <div class="transmission-placeholder">
+                    <span>TRANSMISSION PENDING</span>
+                    <small>VIDEO ID REQUIRED</small>
+                </div>
+                <div class="transmission-bottomline">
+                    <span>V4TLUKSA</span>
+                    <a href="https://www.youtube.com/@V4TLukas" target="_blank" rel="noopener">CHANNEL ↗</a>
+                </div>
+            </div>
+        </article>
+
+    </div>
+
+    <div class="transmissions-footer reveal">
+        <span>THE ARCHIVE IS MOVING.</span>
+        <span>NEW SIGNALS WILL APPEAR HERE.</span>
+    </div>
+</section>
+
 <!-- DISCORD -->
 
 <section class="discord">
@@ -4220,73 +4452,44 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
   });
 })();
 </script>
-<script id="fractured-v3-youtube-config">
+<script id="fractured-v5-youtube-config">
 (function(){
-  /* FRACTURED // replace these 3 empty values with the 11-character IDs
-     from the latest YouTube video URLs. */
   const VIDEOS = {
     "Alpharex": "",
     "MidnightRaven__": "",
     "V4TLUKSA": ""
   };
 
-  const originParam = (location.protocol === "http:" || location.protocol === "https:")
-    ? "&origin=" + encodeURIComponent(location.origin)
-    : "";
-  const params = "autoplay=1&mute=1&controls=0&playsinline=1&rel=0&playlist=VIDEO_ID&loop=1&enablejsapi=1" + originParam;
+  function loadTransmission(card){
+    const name = card.getAttribute("data-character");
+    const frame = card.querySelector("iframe[data-youtube-video]");
+    const placeholder = card.querySelector(".transmission-placeholder");
+    if(!frame) return;
 
-  function initFracturedVideos(){
-    document.querySelectorAll(".character-card").forEach(function(card){
-      const nameEl = card.querySelector(".character-name");
-      const frame = card.querySelector("iframe[data-youtube-video]");
-      const video = card.querySelector(".character-video");
-      if(!nameEl || !frame || !video) return;
-      const id = VIDEOS[nameEl.textContent.trim()];
-
-      if(id && /^[A-Za-z0-9_-]{11}$/.test(id)){
-        frame.src = "https://www.youtube.com/embed/" + id + "?" + params.replace("VIDEO_ID", id);
-        frame.removeAttribute("data-youtube-video");
-      } else {
-        const notice = document.createElement("div");
-        notice.className = "yt-pending";
-        notice.innerHTML = "<span>TRANSMISSION PENDING</span><small>VIDEO ID REQUIRED</small>";
-        video.appendChild(notice);
-      }
-    });
+    const id = VIDEOS[name];
+    if(id && /^[A-Za-z0-9_-]{11}$/.test(id)){
+      const origin = (location.protocol === "http:" || location.protocol === "https:")
+        ? "&origin=" + encodeURIComponent(location.origin)
+        : "";
+      frame.src =
+        "https://www.youtube.com/embed/" + id +
+        "?autoplay=1&mute=1&controls=0&playsinline=1&rel=0&loop=1" +
+        "&playlist=" + id + "&enablejsapi=1" + origin;
+      frame.removeAttribute("data-youtube-video");
+      if(placeholder) placeholder.style.display="none";
+    }
   }
 
-  if(document.readyState === "loading"){
-    document.addEventListener("DOMContentLoaded", initFracturedVideos);
-  } else {
-    initFracturedVideos();
+  function init(){
+    document.querySelectorAll(".transmission-card").forEach(loadTransmission);
   }
-})();
-</script>
 
-
-<script id="fractured-v4-local-diagnostic">
-(function(){
-  if(location.protocol === "file:"){
-    document.querySelectorAll(".character-video").forEach(function(box){
-      var note=document.createElement("div");
-      note.className="local-host-note";
-      note.innerHTML="<b>LOCAL PREVIEW</b><span>Run this page through http://localhost — YouTube can reject embeds opened directly as file://.</span>";
-      box.appendChild(note);
-    });
+  if(document.readyState==="loading"){
+    document.addEventListener("DOMContentLoaded",init);
+  }else{
+    init();
   }
 })();
 </script>
-<style id="fractured-v4-local-style">
-.local-host-note{
-  position:absolute;left:10px;bottom:10px;z-index:7;
-  max-width:220px;padding:8px 10px;
-  background:rgba(0,0,0,.78);border:1px solid rgba(255,43,43,.28);
-  color:rgba(255,255,255,.65);font:7px/1.5 'DM Mono',monospace;
-  letter-spacing:.08em;pointer-events:none;backdrop-filter:blur(8px);
-}
-.local-host-note b{display:block;color:#ff3030;margin-bottom:3px}
-.local-host-note span{display:block;color:rgba(255,255,255,.38)}
-</style>
-
 </body>
 </html>
