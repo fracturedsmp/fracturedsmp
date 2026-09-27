@@ -1952,6 +1952,467 @@ footer{background:#020202}
     .fx-noise,.grain,.scanlines{display:none}
 }
 
+
+/* =========================================================
+   FRACTURED SMP // ULTIMATE VISUAL SYSTEM
+   Visual/UX only — story copy is untouched.
+========================================================= */
+
+:root{
+  --u-red:#c5212d;
+  --u-red2:#ff3b49;
+  --u-white:#f4f4f1;
+  --u-muted:#8f8f8f;
+  --u-glass:rgba(9,9,10,.62);
+  --u-line:rgba(255,255,255,.10);
+  --u-ease:cubic-bezier(.16,1,.3,1);
+}
+
+html{
+  scroll-behavior:smooth;
+  scrollbar-width:thin;
+  scrollbar-color:#5f171d #050505;
+}
+
+body{
+  background:
+    radial-gradient(circle at 50% -10%,rgba(197,33,45,.08),transparent 34%),
+    #050505;
+}
+
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  pointer-events:none;
+  z-index:994;
+  background:
+    radial-gradient(circle at 50% 35%,transparent 0 38%,rgba(0,0,0,.22) 100%),
+    linear-gradient(115deg,transparent 0 48%,rgba(197,33,45,.018) 50%,transparent 52%);
+  mix-blend-mode:screen;
+}
+
+::selection{
+  background:var(--u-red2);
+  color:#fff;
+}
+
+/* ---------- top HUD ---------- */
+.u-hud{
+  position:fixed;
+  left:18px;
+  top:50%;
+  transform:translateY(-50%);
+  z-index:700;
+  writing-mode:vertical-rl;
+  font:700 8px/1 monospace;
+  letter-spacing:.32em;
+  color:#555;
+  pointer-events:none;
+  opacity:.65;
+}
+.u-hud b{color:#a32029;font-weight:700}
+
+.u-corner{
+  position:fixed;
+  z-index:700;
+  width:24px;
+  height:24px;
+  pointer-events:none;
+  opacity:.38;
+}
+.u-corner.tl{top:92px;left:18px;border-top:1px solid #777;border-left:1px solid #777}
+.u-corner.tr{top:92px;right:18px;border-top:1px solid #777;border-right:1px solid #777}
+.u-corner.bl{bottom:18px;left:18px;border-bottom:1px solid #777;border-left:1px solid #777}
+.u-corner.br{bottom:18px;right:18px;border-bottom:1px solid #777;border-right:1px solid #777}
+
+/* ---------- navigation ---------- */
+.nav{
+  transition:
+    height .65s var(--u-ease),
+    background .65s var(--u-ease),
+    border-color .4s,
+    box-shadow .65s var(--u-ease);
+}
+.nav.scrolled{
+  border-bottom-color:rgba(197,33,45,.16);
+}
+.nav-links a{
+  transition:color .3s,transform .3s;
+}
+.nav-links a.active{
+  color:#fff;
+  transform:translateY(-1px);
+}
+.nav-links a.active::after{width:100%}
+
+.nav-discord,
+.btn{
+  isolation:isolate;
+  transform-style:preserve-3d;
+  will-change:transform;
+}
+.nav-discord::after,
+.btn::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(110deg,transparent 20%,rgba(255,255,255,.22) 48%,transparent 72%);
+  transform:translateX(-130%);
+  transition:transform .8s var(--u-ease);
+  pointer-events:none;
+}
+.nav-discord:hover::after,
+.btn:hover::after{transform:translateX(130%)}
+
+/* ---------- hero ---------- */
+.hero{
+  perspective:1200px;
+}
+.hero-content{
+  transform-style:preserve-3d;
+}
+.hero h1{
+  position:relative;
+  filter:drop-shadow(0 25px 70px rgba(0,0,0,.65));
+}
+.hero h1::before{
+  content:"";
+  position:absolute;
+  inset:-10% -4%;
+  background:radial-gradient(ellipse,rgba(197,33,45,.09),transparent 60%);
+  filter:blur(35px);
+  z-index:-1;
+}
+.hero-title-line{
+  animation:uTitleIn 1.15s var(--u-ease) both;
+}
+.hero-title-line:nth-child(2){animation-delay:.09s}
+@keyframes uTitleIn{
+  from{opacity:0;transform:translateY(35px) scale(.97);filter:blur(12px)}
+  to{opacity:1;transform:none;filter:none}
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    linear-gradient(90deg,transparent 0 14%,rgba(255,255,255,.018) 14.1%,transparent 14.2%),
+    linear-gradient(90deg,transparent 0 86%,rgba(255,255,255,.018) 86.1%,transparent 86.2%);
+  mask-image:linear-gradient(to bottom,#000,transparent 75%);
+}
+
+.scroll-indicator{
+  transition:opacity .4s;
+}
+
+/* ---------- sections ---------- */
+.section{
+  position:relative;
+  isolation:isolate;
+}
+.section::before{
+  content:"";
+  position:absolute;
+  left:7vw;
+  right:7vw;
+  top:0;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(255,255,255,.11),transparent);
+  opacity:.7;
+}
+.section-title{
+  text-wrap:balance;
+}
+
+/* ---------- about ---------- */
+.visual-frame{
+  overflow:hidden;
+  box-shadow:
+    0 35px 100px rgba(0,0,0,.55),
+    0 0 0 1px rgba(255,255,255,.02);
+}
+.visual-frame .archive-world{
+  transition:transform 1.2s var(--u-ease);
+}
+.visual-frame:hover .archive-world{
+  transform:perspective(600px) rotateX(55deg) rotateZ(-15deg) scale(1.08);
+}
+.visual-frame::before{
+  text-shadow:0 0 18px rgba(255,255,255,.06);
+}
+
+/* ---------- timeline ---------- */
+.timeline-item{
+  transition:transform .7s var(--u-ease),opacity .7s;
+}
+.timeline-item:hover{
+  transform:translateX(12px);
+}
+.timeline-dot{
+  transition:
+    background .35s,
+    border-color .35s,
+    box-shadow .35s,
+    transform .35s;
+}
+.timeline-item:hover .timeline-dot{
+  background:var(--u-red);
+  border-color:var(--u-red2);
+  box-shadow:0 0 0 6px rgba(197,33,45,.08),0 0 30px rgba(197,33,45,.5);
+  transform:rotate(225deg) scale(1.18);
+}
+
+/* ---------- characters ---------- */
+.character-card{
+  contain:layout paint;
+  will-change:transform;
+}
+.character-card::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:3;
+  pointer-events:none;
+  background:
+    linear-gradient(115deg,rgba(255,255,255,.10),transparent 18% 72%,rgba(197,33,45,.10)),
+    linear-gradient(to top,rgba(0,0,0,.45),transparent 45%);
+  opacity:.65;
+}
+.character-card::after{
+  content:"";
+  position:absolute;
+  width:180%;
+  height:55%;
+  left:-40%;
+  top:-30%;
+  pointer-events:none;
+  background:linear-gradient(115deg,transparent 35%,rgba(255,255,255,.09) 50%,transparent 65%);
+  transform:rotate(12deg) translateX(-80%);
+  transition:transform 1s var(--u-ease);
+}
+.character-card:hover::after{
+  transform:rotate(12deg) translateX(80%);
+}
+.character-info{
+  transform:translateZ(25px);
+}
+.character-description{
+  transition:max-height .7s var(--u-ease),margin .7s,opacity .5s;
+}
+
+/* ---------- factions ---------- */
+.faction{
+  position:relative;
+  overflow:hidden;
+}
+.faction::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width:2px;
+  background:linear-gradient(to bottom,transparent,var(--u-red),transparent);
+  transform:scaleY(0);
+  transition:transform .55s var(--u-ease);
+}
+.faction:hover::before{transform:scaleY(1)}
+.faction-symbol{
+  transition:transform .55s var(--u-ease),border-color .35s,box-shadow .35s;
+}
+.faction:hover .faction-symbol{
+  transform:rotate(225deg) scale(1.08);
+  border-color:#752029;
+  box-shadow:0 0 25px rgba(197,33,45,.14);
+}
+
+/* ---------- fracture ---------- */
+.fracture{
+  min-height:100vh;
+}
+.fracture-title{
+  text-shadow:
+    0 0 50px rgba(197,33,45,.08),
+    0 30px 100px rgba(0,0,0,.9);
+  animation:uFracture 6s ease-in-out infinite alternate;
+}
+@keyframes uFracture{
+  from{transform:scale(1);letter-spacing:-.09em}
+  to{transform:scale(1.015);letter-spacing:-.075em}
+}
+.fracture-content::after{
+  content:"";
+  display:block;
+  width:90px;
+  height:1px;
+  margin:34px auto 0;
+  background:linear-gradient(90deg,transparent,var(--u-red),transparent);
+  box-shadow:0 0 18px rgba(197,33,45,.35);
+}
+
+/* ---------- why cards ---------- */
+.why-grid{
+  position:relative;
+}
+.why-card{
+  position:relative;
+  overflow:hidden;
+  transition:
+    background .5s var(--u-ease),
+    transform .5s var(--u-ease),
+    padding .5s var(--u-ease);
+}
+.why-card::before{
+  content:"";
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:100%;
+  height:2px;
+  background:linear-gradient(90deg,var(--u-red),transparent);
+  transform:scaleX(0);
+  transform-origin:left;
+  transition:transform .55s var(--u-ease);
+}
+.why-card:hover{
+  transform:translateY(-5px);
+}
+.why-card:hover::before{transform:scaleX(1)}
+.why-card h3{transition:transform .5s var(--u-ease)}
+.why-card:hover h3{transform:translateX(5px)}
+
+/* ---------- requirements ---------- */
+.requirement{
+  position:relative;
+  transition:padding-left .45s var(--u-ease),background .45s;
+}
+.requirement:hover{
+  padding-left:12px;
+  background:linear-gradient(90deg,rgba(197,33,45,.045),transparent);
+}
+.requirement h4{transition:color .3s}
+.requirement:hover h4{color:#fff}
+
+/* ---------- apply / discord ---------- */
+.apply,
+.discord{
+  overflow:hidden;
+}
+.apply::before,
+.discord::before{
+  content:"";
+  position:absolute;
+  width:55vw;
+  height:55vw;
+  border-radius:50%;
+  left:50%;
+  top:50%;
+  transform:translate(-50%,-50%);
+  border:1px solid rgba(197,33,45,.055);
+  box-shadow:
+    0 0 0 8vw rgba(197,33,45,.012),
+    0 0 0 16vw rgba(197,33,45,.007);
+  pointer-events:none;
+  animation:uPulse 7s ease-in-out infinite;
+}
+@keyframes uPulse{
+  0%,100%{transform:translate(-50%,-50%) scale(.96);opacity:.45}
+  50%{transform:translate(-50%,-50%) scale(1.04);opacity:.85}
+}
+.apply > *,
+.discord > *{position:relative;z-index:2}
+
+/* ---------- accordion ---------- */
+.rule{
+  transition:border-color .3s;
+}
+.rule.open{
+  border-bottom-color:rgba(197,33,45,.35);
+}
+.rule-button{
+  position:relative;
+}
+.rule-button::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:0;
+  bottom:0;
+  width:2px;
+  background:var(--u-red);
+  transform:scaleY(0);
+  transition:transform .45s var(--u-ease);
+}
+.rule.open .rule-button::before{transform:scaleY(1)}
+.rule-icon{
+  width:26px;
+  height:26px;
+  display:grid;
+  place-items:center;
+  border:1px solid #333;
+  transition:.4s var(--u-ease);
+}
+.rule.open .rule-icon{
+  color:#fff;
+  border-color:#76212a;
+  background:rgba(197,33,45,.08);
+}
+
+/* ---------- footer ---------- */
+footer{
+  position:relative;
+  overflow:hidden;
+}
+footer::before{
+  content:"FRACTURED";
+  position:absolute;
+  right:-2vw;
+  bottom:-6vw;
+  font:900 clamp(80px,15vw,240px)/.7 Montserrat,sans-serif;
+  letter-spacing:-.08em;
+  color:rgba(255,255,255,.018);
+  pointer-events:none;
+}
+.footer-top,.footer-bottom{position:relative;z-index:2}
+
+/* ---------- reveal polish ---------- */
+.reveal{
+  will-change:transform,opacity;
+}
+.reveal.visible{
+  animation:uReveal .9s var(--u-ease) both;
+}
+@keyframes uReveal{
+  from{opacity:0;transform:translateY(28px)}
+  to{opacity:1;transform:none}
+}
+
+/* ---------- mobile ---------- */
+@media(max-width:760px){
+  .u-hud,.u-corner{display:none}
+  body::after{opacity:.55}
+  .section{padding-top:115px;padding-bottom:115px}
+  .section::before{left:22px;right:22px}
+  .timeline-item:hover{transform:none}
+  .character-card{transform:none!important}
+  .why-card:hover{transform:none}
+  .apply::before,.discord::before{
+    width:110vw;height:110vw;
+  }
+}
+
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{
+    animation-duration:.01ms!important;
+    animation-iteration-count:1!important;
+    scroll-behavior:auto!important;
+    transition-duration:.01ms!important;
+  }
+}
+
 </style>
 </head>
 
@@ -2837,167 +3298,291 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 </script>
 
 
+
+<script>
 /* =========================================================
-   FRACTURED SMP // INTERACTION ENGINE
+   FRACTURED SMP // ULTIMATE INTERACTION ENGINE
 ========================================================= */
 (() => {
-    const body = document.body;
+  "use strict";
 
-    // Cinematic overlays
-    ["fx-progress","fx-vignette","fx-noise"].forEach(cls => {
-        if (!document.querySelector("." + cls)) {
-            const el = document.createElement("div");
-            el.className = cls;
-            document.body.appendChild(el);
-        }
-    });
+  const $ = (s, r=document) => r.querySelector(s);
+  const $$ = (s, r=document) => [...r.querySelectorAll(s)];
+  const reduceMotion = matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    // Custom cursor
-    if (matchMedia("(pointer:fine)").matches) {
-        const dot = document.createElement("div");
-        const ring = document.createElement("div");
-        dot.className = "fx-cursor";
-        ring.className = "fx-cursor-ring";
-        document.body.append(dot, ring);
+  /* HUD */
+  const hud = document.createElement("div");
+  hud.className = "u-hud";
+  hud.innerHTML = "FRACTURED // <b>LIVE</b> // SYSTEM";
+  document.body.appendChild(hud);
 
-        let x=innerWidth/2,y=innerHeight/2,rx=x,ry=y;
-        addEventListener("pointermove", e => {
-            x=e.clientX; y=e.clientY;
-            document.documentElement.style.setProperty("--mx", x+"px");
-            document.documentElement.style.setProperty("--my", y+"px");
-        });
-        const cursorLoop = () => {
-            rx += (x-rx)*.18; ry += (y-ry)*.18;
-            dot.style.left=x+"px"; dot.style.top=y+"px";
-            ring.style.left=rx+"px"; ring.style.top=ry+"px";
-            requestAnimationFrame(cursorLoop);
-        };
-        cursorLoop();
+  ["tl","tr","bl","br"].forEach(p => {
+    const el=document.createElement("div");
+    el.className="u-corner "+p;
+    document.body.appendChild(el);
+  });
 
-        document.querySelectorAll("a,button,.character-card,.faction,.rule-button,.btn").forEach(el=>{
-            el.addEventListener("mouseenter",()=>body.classList.add("fx-hover"));
-            el.addEventListener("mouseleave",()=>body.classList.remove("fx-hover"));
-        });
+  /* Reading progress */
+  const progress=document.createElement("div");
+  progress.className="fx-progress";
+  document.body.appendChild(progress);
+
+  const updateScrollUI=()=>{
+    const doc=document.documentElement;
+    const max=doc.scrollHeight-innerHeight;
+    progress.style.transform=`scaleX(${max>0 ? scrollY/max : 0})`;
+    const nav=$("#nav");
+    if(nav) nav.classList.toggle("scrolled",scrollY>45);
+  };
+  addEventListener("scroll",updateScrollUI,{passive:true});
+  addEventListener("resize",updateScrollUI,{passive:true});
+  updateScrollUI();
+
+  /* Safe cinematic overlays */
+  ["fx-vignette","fx-noise"].forEach(cls=>{
+    if(!document.querySelector("."+cls)){
+      const el=document.createElement("div");
+      el.className=cls;
+      document.body.appendChild(el);
     }
+  });
 
-    // Reading progress + back to top
-    const progress = document.querySelector(".fx-progress");
-    const top = document.createElement("button");
-    top.className="fx-backtop";
-    top.setAttribute("aria-label","Back to top");
-    top.innerHTML="↑";
-    document.body.appendChild(top);
-    top.onclick=()=>scrollTo({top:0,behavior:"smooth"});
+  /* Cursor */
+  if(matchMedia("(pointer:fine)").matches && !reduceMotion){
+    const dot=document.createElement("div");
+    const ring=document.createElement("div");
+    dot.className="fx-cursor";
+    ring.className="fx-cursor-ring";
+    document.body.append(dot,ring);
 
-    const updateScroll = () => {
-        const max = document.documentElement.scrollHeight - innerHeight;
-        progress.style.transform=`scaleX(${max>0?scrollY/max:0})`;
-        top.classList.toggle("visible",scrollY>innerHeight*.8);
-        nav?.classList.toggle("scrolled",scrollY>50);
+    let x=innerWidth/2,y=innerHeight/2,rx=x,ry=y;
+    addEventListener("pointermove",e=>{
+      x=e.clientX; y=e.clientY;
+      document.documentElement.style.setProperty("--mx",x+"px");
+      document.documentElement.style.setProperty("--my",y+"px");
+    },{passive:true});
+
+    const tick=()=>{
+      rx+=(x-rx)*.18;
+      ry+=(y-ry)*.18;
+      dot.style.left=x+"px"; dot.style.top=y+"px";
+      ring.style.left=rx+"px"; ring.style.top=ry+"px";
+      requestAnimationFrame(tick);
     };
-    addEventListener("scroll",updateScroll,{passive:true});
-    updateScroll();
+    tick();
 
-    // Active navigation
-    const navLinks=[...document.querySelectorAll(".nav-links a[href^='#']")];
-    const sections=[...document.querySelectorAll("main section[id]")];
-    const sectionObserver=new IntersectionObserver(entries=>{
-        entries.forEach(entry=>{
-            if(entry.isIntersecting){
-                navLinks.forEach(a=>a.classList.toggle("active",a.getAttribute("href")==="#"+entry.target.id));
-            }
-        });
+    $$("a,button,.character-card,.faction,.why-card,.visual-frame").forEach(el=>{
+      el.addEventListener("pointerenter",()=>document.body.classList.add("fx-hover"));
+      el.addEventListener("pointerleave",()=>document.body.classList.remove("fx-hover"));
+    });
+  }
+
+  /* Active navigation */
+  const navLinks=$$(".nav-links a[href^='#'],.mobile-menu a[href^='#']");
+  const sections=$$("section[id]");
+  if("IntersectionObserver" in window){
+    const io=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          navLinks.forEach(a=>a.classList.toggle(
+            "active",
+            a.getAttribute("href")==="#"+entry.target.id
+          ));
+        }
+      });
     },{rootMargin:"-35% 0px -55% 0px",threshold:0});
-    sections.forEach(s=>sectionObserver.observe(s));
+    sections.forEach(s=>io.observe(s));
+  }
 
-    // Section side markers (decorative only)
-    document.querySelectorAll("main > section").forEach((section,i)=>{
-        if(!section.querySelector(".fx-section-mark")){
-            const mark=document.createElement("span");
-            mark.className="fx-section-mark";
-            mark.textContent=`FRX // ${String(i+1).padStart(2,"0")}`;
-            section.appendChild(mark);
-        }
+  /* Mobile menu - defensive, so a missing element can never break the page */
+  const menuBtn=$("#menuBtn");
+  const mobileMenu=$("#mobileMenu");
+  if(menuBtn && mobileMenu){
+    const close=()=>{
+      mobileMenu.classList.remove("open");
+      document.body.classList.remove("menu-open");
+      menuBtn.setAttribute("aria-expanded","false");
+    };
+    menuBtn.setAttribute("aria-expanded","false");
+    menuBtn.addEventListener("click",()=>{
+      const open=mobileMenu.classList.toggle("open");
+      document.body.classList.toggle("menu-open",open);
+      menuBtn.setAttribute("aria-expanded",String(open));
     });
+    $$(".mobile-menu a").forEach(a=>a.addEventListener("click",close));
+    addEventListener("keydown",e=>{if(e.key==="Escape")close()});
+  }
 
-    // Subtle pointer glow / parallax
-    const hero=document.querySelector(".hero");
-    const heroWorld=document.querySelector(".hero-world");
-    if(hero && matchMedia("(pointer:fine)").matches){
-        hero.addEventListener("pointermove",e=>{
-            const r=hero.getBoundingClientRect();
-            const px=(e.clientX-r.left)/r.width-.5;
-            const py=(e.clientY-r.top)/r.height-.5;
-            heroWorld.style.transform=`translate3d(${px*-12}px,${py*-8}px,0)`;
-            document.querySelectorAll(".hero-content").forEach(el=>{
-                el.style.transform=`translate3d(${px*5}px,${py*3}px,0)`;
-            });
-        });
-        hero.addEventListener("pointerleave",()=>{
-            heroWorld.style.transform="";
-            document.querySelectorAll(".hero-content").forEach(el=>el.style.transform="");
-        });
-    }
-
-    // Premium card tilt, disabled on touch
-    if(matchMedia("(pointer:fine)").matches){
-        document.querySelectorAll(".character-card,.visual-frame").forEach(card=>{
-            card.addEventListener("pointermove",e=>{
-                const r=card.getBoundingClientRect();
-                const px=(e.clientX-r.left)/r.width-.5;
-                const py=(e.clientY-r.top)/r.height-.5;
-                const amount=card.classList.contains("character-card")?5:3;
-                card.style.transform=`perspective(1100px) rotateX(${py*-amount}deg) rotateY(${px*amount}deg) translateY(-3px)`;
-            });
-            card.addEventListener("pointerleave",()=>{
-                card.style.transform="";
-            });
-        });
-    }
-
-    // Button magnetic micro-interaction
-    if(matchMedia("(pointer:fine)").matches){
-        document.querySelectorAll(".btn,.nav-discord").forEach(btn=>{
-            btn.addEventListener("pointermove",e=>{
-                const r=btn.getBoundingClientRect();
-                const x=(e.clientX-(r.left+r.width/2))*.08;
-                const y=(e.clientY-(r.top+r.height/2))*.08;
-                btn.style.transform=`translate(${x}px,${y}px)`;
-            });
-            btn.addEventListener("pointerleave",()=>btn.style.transform="");
-        });
-    }
-
-    // More organic particle field without touching existing story
-    const particleContainer=document.getElementById("particles");
-    if(particleContainer){
-        for(let i=0;i<45;i++){
-            const p=document.createElement("span");
-            p.className="particle";
-            p.style.left=Math.random()*100+"%";
-            p.style.width=p.style.height=(Math.random()<.85?1:2)+"px";
-            p.style.animationDuration=(7+Math.random()*18)+"s";
-            p.style.animationDelay=(-Math.random()*20)+"s";
-            p.style.opacity=(.08+Math.random()*.45);
-            particleContainer.appendChild(p);
-        }
-    }
-
-    // Make accordion resilient after resize
-    addEventListener("resize",()=>{
-        document.querySelectorAll(".rule.open .rule-content").forEach(c=>{
-            c.style.maxHeight=c.scrollHeight+"px";
-        });
+  /* Hero depth */
+  const hero=$(".hero");
+  const heroBg=$("#heroBg");
+  if(hero && heroBg && !reduceMotion && matchMedia("(pointer:fine)").matches){
+    hero.addEventListener("pointermove",e=>{
+      const r=hero.getBoundingClientRect();
+      const px=(e.clientX-r.left)/r.width-.5;
+      const py=(e.clientY-r.top)/r.height-.5;
+      heroBg.style.transform=`scale(1.06) translate(${px*-12}px,${py*-8}px)`;
+      const content=$(".hero-content");
+      if(content) content.style.transform=`translate(${px*5}px,${py*4}px)`;
     });
-
-    // Keyboard-friendly Escape for mobile menu
-    addEventListener("keydown",e=>{
-        if(e.key==="Escape"){
-            document.querySelector(".mobile-menu")?.classList.remove("open");
-            body.classList.remove("menu-open");
-        }
+    hero.addEventListener("pointerleave",()=>{
+      heroBg.style.transform="";
+      const content=$(".hero-content");
+      if(content) content.style.transform="";
     });
+  }
+
+  /* 3D cards */
+  if(!reduceMotion && matchMedia("(pointer:fine)").matches){
+    $$(".character-card,.visual-frame").forEach(card=>{
+      card.addEventListener("pointermove",e=>{
+        const r=card.getBoundingClientRect();
+        const px=(e.clientX-r.left)/r.width-.5;
+        const py=(e.clientY-r.top)/r.height-.5;
+        const amount=card.classList.contains("character-card")?5:3;
+        card.style.transform=`perspective(1100px) rotateX(${py*-amount}deg) rotateY(${px*amount}deg) translateY(-4px)`;
+      });
+      card.addEventListener("pointerleave",()=>card.style.transform="");
+    });
+  }
+
+  /* Magnetic buttons, without breaking their CSS transforms */
+  if(!reduceMotion && matchMedia("(pointer:fine)").matches){
+    $$(".btn,.nav-discord").forEach(btn=>{
+      btn.addEventListener("pointermove",e=>{
+        const r=btn.getBoundingClientRect();
+        const x=(e.clientX-(r.left+r.width/2))*.055;
+        const y=(e.clientY-(r.top+r.height/2))*.055;
+        btn.style.translate=`${x}px ${y}px`;
+      });
+      btn.addEventListener("pointerleave",()=>btn.style.translate="");
+    });
+  }
+
+  /* Scroll reveal */
+  if("IntersectionObserver" in window){
+    const revealObserver=new IntersectionObserver(entries=>{
+      entries.forEach(entry=>{
+        if(entry.isIntersecting){
+          entry.target.classList.add("visible");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    },{threshold:.1,rootMargin:"0px 0px -35px 0px"});
+    $$(".reveal").forEach(el=>revealObserver.observe(el));
+  }else{
+    $$(".reveal").forEach(el=>el.classList.add("visible"));
+  }
+
+  /* Accordion: resilient and accessible */
+  $$(".rule-button").forEach(button=>{
+    button.setAttribute("aria-expanded","false");
+    button.addEventListener("click",()=>{
+      const rule=button.closest(".rule");
+      const content=rule && $(".rule-content",rule);
+      if(!rule || !content) return;
+
+      $$(".rule").forEach(other=>{
+        if(other!==rule){
+          other.classList.remove("open");
+          const c=$(".rule-content",other);
+          const b=$(".rule-button",other);
+          if(c)c.style.maxHeight=null;
+          if(b)b.setAttribute("aria-expanded","false");
+        }
+      });
+
+      const open=rule.classList.toggle("open");
+      button.setAttribute("aria-expanded",String(open));
+      content.style.maxHeight=open ? content.scrollHeight+"px" : null;
+    });
+  });
+
+  addEventListener("resize",()=>{
+    $$(".rule.open .rule-content").forEach(c=>c.style.maxHeight=c.scrollHeight+"px");
+  },{passive:true});
+
+  /* Smooth anchors with fixed-nav offset */
+  $$('a[href^="#"]').forEach(a=>{
+    a.addEventListener("click",e=>{
+      const id=a.getAttribute("href");
+      if(!id || id==="#")return;
+      const target=$(id);
+      if(!target)return;
+      e.preventDefault();
+      target.scrollIntoView({behavior:reduceMotion?"auto":"smooth",block:"start"});
+    });
+  });
+
+  /* Back to top */
+  const top=document.createElement("button");
+  top.className="fx-backtop";
+  top.type="button";
+  top.setAttribute("aria-label","Back to top");
+  top.textContent="↑";
+  Object.assign(top.style,{
+    position:"fixed",right:"22px",bottom:"22px",zIndex:"800",
+    width:"42px",height:"42px",border:"1px solid rgba(255,255,255,.14)",
+    background:"rgba(7,7,7,.72)",color:"#fff",cursor:"pointer",
+    opacity:"0",visibility:"hidden",transform:"translateY(12px)",
+    transition:"opacity .35s,visibility .35s,transform .35s",
+    backdropFilter:"blur(14px)"
+  });
+  document.body.appendChild(top);
+
+  addEventListener("scroll",()=>{
+    const on=scrollY>innerHeight*.65;
+    top.style.opacity=on?"1":"0";
+    top.style.visibility=on?"visible":"hidden";
+    top.style.transform=on?"translateY(0)":"translateY(12px)";
+  },{passive:true});
+  top.addEventListener("click",()=>scrollTo({top:0,behavior:reduceMotion?"auto":"smooth"}));
+
+  /* Particle field: only add extras if the original container exists */
+  const particles=$("#particles");
+  if(particles && particles.children.length<70 && !reduceMotion){
+    for(let i=0;i<35;i++){
+      const p=document.createElement("span");
+      p.className="particle";
+      p.style.left=Math.random()*100+"%";
+      p.style.width=p.style.height=(Math.random()<.88?1:2)+"px";
+      p.style.animationDuration=(7+Math.random()*18)+"s";
+      p.style.animationDelay=(-Math.random()*20)+"s";
+      p.style.opacity=(.08+Math.random()*.4);
+      particles.appendChild(p);
+    }
+  }
+
+  /* Micro text scramble on section labels, purely visual */
+  if(!reduceMotion){
+    const chars="01/\\\\[]<>#";
+    $$(".section-label").forEach(label=>{
+      label.addEventListener("mouseenter",()=>{
+        const original=label.dataset.original || label.textContent;
+        label.dataset.original=original;
+        let frame=0;
+        const timer=setInterval(()=>{
+          label.textContent=original.split("").map((c,i)=>{
+            if(c===" " || i<3 || frame>7) return c;
+            return chars[Math.floor(Math.random()*chars.length)];
+          }).join("");
+          if(frame++>8){
+            clearInterval(timer);
+            label.textContent=original;
+          }
+        },35);
+      });
+    });
+  }
+
+  /* Loader safety: never trap the visitor if load events fail */
+  setTimeout(()=>{
+    const loader=$(".loader");
+    if(loader) loader.classList.add("hidden");
+  },2600);
+
 })();
+</script>
 
 </body>
 </html>
